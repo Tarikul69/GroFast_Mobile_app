@@ -3,42 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>GroFast - Flutter Grocery App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      color: #333;
-    }
-    h1, h2, h3 {
-      color: #2E8B57;
-    }
-    code {
-      background-color: #f4f4f4;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      overflow: auto;
-      border-radius: 4px;
-    }
-    ul {
-      list-style-type: square;
-      margin-left: 20px;
-    }
-    a {
-      color: #2E8B57;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  
 </head>
 <body>
 <center>
