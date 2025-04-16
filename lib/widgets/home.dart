@@ -1,51 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:gro_fast/model/model.dart';
-import 'package:gro_fast/network/api_service.dart';
+import '../network/api_service.dart';
 
-class home extends StatelessWidget {
-  final ApiService apiService = ApiService();
+class home extends StatefulWidget {
+  const home({super.key});
+
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
+  late Future<List<Product>> productsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    productsFuture = ApiService().fetchProducts();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('GroFast'), backgroundColor: Colors.green),
+      appBar: AppBar(
+        title: const Text("Users List"),
+        backgroundColor: Colors.green,
+      ),
       body: FutureBuilder<List<Product>>(
-        future: apiService.fetchProducts(),
+        future: productsFuture,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return Center(child: CircularProgressIndicator());
-          if (snapshot.hasError)
-            return Center(child: Text('Error: ${snapshot.error}'));
-          if (!snapshot.hasData || snapshot.data!.isEmpty)
-            return Center(child: Text('No products found.'));
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text("No users found."));
+          }
 
           final products = snapshot.data!;
-          return GridView.builder(
+
+          return ListView.builder(
             itemCount: products.length,
             padding: const EdgeInsets.all(12),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 3 / 4,
-            ),
             itemBuilder: (context, index) {
-              final product = products[index];
+              final user = products[index];
+
               return Card(
                 elevation: 4,
+                margin: const EdgeInsets.symmetric(vertical: 8),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(user.profile_picture),
+                    radius: 25,
+                  ),
+                  title: Text(user.usersname),
+                  subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Name: ${product.usersname}',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Quantity: ${product.email}'),
-                      Text('Price: ${product.phone_number}'),
+                      Text("Email: ${user.email}"),
+                      Text("Phone: ${user.phone_number}"),
+                      Text("Address: ${user.address}"),
+                      Text("Verified: ${user.is_verified}"),
+                      Text("Joined: ${user.created_at}"),
                     ],
                   ),
+                  isThreeLine: true,
                 ),
               );
             },
