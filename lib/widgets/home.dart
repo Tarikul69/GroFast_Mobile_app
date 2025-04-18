@@ -15,7 +15,8 @@ class _homeState extends State<home> {
   @override
   void initState() {
     super.initState();
-    getData();
+    // getData('/admin_panel/shop_list/');
+    getData(endpoint: '/admin_panel/shop_list/');
   }
 
   @override

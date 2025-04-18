@@ -54,12 +54,11 @@ class ApiService {
 }
 
 //Api Service useing http
-Future getData() async {
-  final url = Uri.parse('http://192.168.26.186:8000/admin_panel/shop_list/');
+Future getData({required String endpoint}) async {
+  final url = Uri.parse('http://192.168.26.186:8000${endpoint}');
   final response = await http.get(url);
 
   if (response.statusCode == 200) {
-    //print(response.body);
     final json_data = jsonDecode(response.body);
     posts = json_data["shops"] as List;
   } else {
