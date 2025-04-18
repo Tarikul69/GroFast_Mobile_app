@@ -1,4 +1,4 @@
-class Shop_list {
+class Add_model {
   final String usersname;
   final String email;
   final String phone_number;
@@ -7,7 +7,7 @@ class Shop_list {
   final String is_verified;
   final String created_at;
 
-  Shop_list(
+  Add_model(
       {required this.usersname,
       required this.email,
       required this.phone_number,
@@ -16,8 +16,8 @@ class Shop_list {
       required this.is_verified,
       required this.created_at});
 
-  factory Shop_list.fromJson(Map<String, dynamic> json) {
-    return Shop_list(
+  factory Add_model.fromJson(Map<String, dynamic> json) {
+    return Add_model(
       usersname: json['usersname'],
       email: json['email'],
       phone_number: json['phone_number'],
