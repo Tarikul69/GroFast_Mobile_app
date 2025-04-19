@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gro_fast/model/add_model.dart';
 import 'package:gro_fast/model/model.dart';
-import '../network/api_service.dart';
+import 'package:gro_fast/model/users_model.dart';
+import '../../network/api_service.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -12,7 +13,10 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
   late Future<List<Shop_list>> shop_list;
-  late Future<List<Add_model>> add_model;
+  late Future<List<Users_model>> users_model;
+
+  List<dynamic> shops = [];
+  List<dynamic> users = [];
 
   @override
   void initState() {
@@ -26,13 +30,13 @@ class _homeState extends State<home> {
   Future<void> fetchAllData() async {
     try {
       final results = await Future.wait([
-        ApiService().getData(endpoint: '/admin_panel/shop_list/'),
-        ApiService().getData(endpoint: '/admin_panel/users/'),
+        getData(endpoint: '/admin_panel/shop_list/'),
+        // ApiService().getData(endpoint: '/admin_panel/users/'),
       ]);
 
       setState(() {
-        dynamic shops1 = results[0]; // First API response
-        dynamic users1 = results[1]; // Second API response
+        dynamic shops = results[0]; // First API response
+        dynamic users = results[1]; // Second API response
       });
     } catch (e) {
       print("Error fetching data: $e");
@@ -41,9 +45,23 @@ class _homeState extends State<home> {
 
   @override
   Widget build(BuildContext context) {
+    final userName =
+        users.isNotEmpty ? posts[0]['username'] ?? 'No Name' : 'Loading...';
+    final userEmail = users.isNotEmpty ? posts[0]['email'] ?? '' : '';
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Users List"),
+        title: ListTile(
+          leading: CircleAvatar(),
+          title: Text('${posts.length}'),
+          subtitle: Text(userEmail),
+          trailing: InkWell(
+            onTap: () {
+              //Get.to(notifications());
+            },
+            child: Icon(Icons.notifications),
+          ),
+        ),
         backgroundColor: Colors.green,
       ),
       body: ListView.builder(
@@ -53,9 +71,9 @@ class _homeState extends State<home> {
           return Column(
             children: [
               //Add Portion
-              if (users.isEmpty)
+              if (users.isNotEmpty)
                 Card(
-                  child: Text('usersname'),
+                  child: Text('${users.length}'),
                 ),
 
               //All shop list

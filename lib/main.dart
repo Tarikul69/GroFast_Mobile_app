@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gro_fast/widgets/home.dart';
+import 'package:gro_fast/widgets/home/home.dart';
+import 'package:gro_fast/widgets/home/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         title: 'GroFast',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: home());
+        //home: home());
+        home: test());
   }
 }
