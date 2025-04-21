@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gro_fast/styles/style.dart';
 
+////////////////////////////////////////
 ///////////Text Form Field/////////////
+//////////////////////////////////////
 Widget textFormField({
   required String hintText,
   required IconData icon,
@@ -32,7 +35,9 @@ Widget textFormField({
   );
 }
 
+//////////////////////////////////////
 ///////////Elevated Button///////////
+////////////////////////////////////
 class elevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -75,4 +80,24 @@ class elevatedButton extends StatelessWidget {
       ),
     );
   }
+}
+
+//////////////////////////////////
+//////////Text Button////////////
+////////////////////////////////
+Widget textButton({
+  required String text,
+  required VoidCallback onPressed,
+}) {
+  return TextButton(
+    onPressed: onPressed,
+    child: Text(
+      text,
+      style: textStyle ??
+          const TextStyle(
+            color: Colors.blue,
+            fontSize: 14,
+          ),
+    ),
+  );
 }
