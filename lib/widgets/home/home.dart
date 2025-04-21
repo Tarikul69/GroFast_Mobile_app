@@ -30,7 +30,7 @@ class _homeState extends State<home> {
   Future<void> fetchAllData() async {
     try {
       final results = await Future.wait([
-        getData(endpoint: '/admin_panel/shop_list/'),
+        getData(endpoint: '/users/shops/'),
         // ApiService().getData(endpoint: '/admin_panel/users/'),
       ]);
 
