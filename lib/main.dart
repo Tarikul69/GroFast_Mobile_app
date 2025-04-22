@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gro_fast/widgets/home/home.dart';
 import 'package:gro_fast/widgets/home/test.dart';
 import 'package:gro_fast/widgets/login_registration/login.dart';
+import 'package:gro_fast/widgets/login_registration/registration.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       //home: home());
-      home: login(),
+      home: registration(),
     );
   }
 }
