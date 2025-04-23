@@ -91,13 +91,6 @@ Widget textButton({
 }) {
   return TextButton(
     onPressed: onPressed,
-    child: Text(
-      text,
-      style: textStyle ??
-          const TextStyle(
-            color: Colors.blue,
-            fontSize: 14,
-          ),
-    ),
+    child: Text(text, style: textStyle),
   );
 }

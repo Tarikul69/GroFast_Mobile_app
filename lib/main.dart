@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:gro_fast/widgets/home/home.dart';
-import 'package:gro_fast/widgets/home/test.dart';
-import 'package:gro_fast/widgets/login_registration/login.dart';
-import 'package:gro_fast/widgets/login_registration/registration.dart';
+import 'package:get/get.dart';
+import 'package:gro_fast/widgets/routes/app_routes.dart';
+import 'package:gro_fast/widgets/routes/page_route.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'GroFast',
+    return GetMaterialApp(
+      title: 'Flutter GetX Routing',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      //home: home());
-      home: registration(),
+      initialRoute: AppRoutes.login,
+      getPages: AppPages.routes,
     );
   }
 }

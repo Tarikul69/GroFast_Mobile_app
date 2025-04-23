@@ -4,6 +4,7 @@ import 'package:gro_fast/components/components.dart';
 import 'package:gro_fast/styles/style.dart';
 import 'package:gro_fast/widgets/home/home.dart';
 import 'package:gro_fast/widgets/login_registration/registration.dart';
+import 'package:get/get.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -21,6 +22,16 @@ class _loginState extends State<login> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
+            SizedBox(
+              height: 25,
+            ),
+            Text(
+              "Login",
+              style: textStyle,
+            ),
+            SizedBox(
+              height: 15,
+            ),
             textFormField(
               hintText: "Enter Email",
               icon: Icons.email,
@@ -38,17 +49,27 @@ class _loginState extends State<login> {
               height: 15,
             ),
             textButton(
-                text: "text",
+                text: "Forget Password?",
                 onPressed: () {
                   Get.to(home());
                 }),
             elevatedButton(
               text: "Login",
               onPressed: () {
-                Get.to(registration());
+                Get.toNamed(login as String);
               },
               color: Colors.black,
-            )
+            ),
+            Row(
+              children: [
+                Text("data"),
+                textButton(
+                    text: "SignUp",
+                    onPressed: () {
+                      Get.to(registration());
+                    })
+              ],
+            ),
           ],
         ),
       ),

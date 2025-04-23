@@ -16,6 +16,7 @@ const TextStyle kHeadingTextStyle = TextStyle(
 );
 
 const TextStyle textStyle = TextStyle(
-  fontSize: 16,
-  color: Colors.grey,
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
+  color: Color.fromARGB(255, 0, 0, 0),
 );
