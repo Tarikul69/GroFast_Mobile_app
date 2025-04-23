@@ -56,7 +56,7 @@ class _loginState extends State<login> {
             elevatedButton(
               text: "Login",
               onPressed: () {
-                Get.toNamed(AppRoutes.home);
+                Get.offAllNamed(AppRoutes.home);
               },
               color: Colors.black,
             ),

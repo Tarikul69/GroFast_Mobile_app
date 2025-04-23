@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gro_fast/widgets/routes/app_routes.dart';
-import 'package:gro_fast/widgets/routes/page_route.dart';
+import 'package:gro_fast/routes/app_routes.dart';
+import 'package:gro_fast/routes/page_route.dart';
 
 void main() {
   runApp(MyApp());
