@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:gro_fast/components/components.dart';
 import 'package:gro_fast/styles/style.dart';
-import 'package:gro_fast/widgets/home/home.dart';
 import 'package:gro_fast/widgets/login_registration/registration.dart';
 import 'package:get/get.dart';
+import 'package:gro_fast/widgets/routes/app_routes.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -51,7 +51,7 @@ class _loginState extends State<login> {
             textButton(
                 text: "Forget Password?",
                 onPressed: () {
-                  Get.to(home());
+                  Get.toNamed(AppRoutes.forgetpassword);
                 }),
             elevatedButton(
               text: "Login",
