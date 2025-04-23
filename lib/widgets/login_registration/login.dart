@@ -4,7 +4,7 @@ import 'package:gro_fast/components/components.dart';
 import 'package:gro_fast/styles/style.dart';
 import 'package:gro_fast/widgets/login_registration/registration.dart';
 import 'package:get/get.dart';
-import 'package:gro_fast/widgets/routes/app_routes.dart';
+import 'package:gro_fast/routes/app_routes.dart';
 
 class login extends StatefulWidget {
   const login({super.key});

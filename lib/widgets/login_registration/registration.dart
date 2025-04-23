@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:gro_fast/components/components.dart';
 import 'package:gro_fast/styles/style.dart';
 import 'package:gro_fast/widgets/login_registration/login.dart';
-import 'package:gro_fast/widgets/routes/app_routes.dart';
+import 'package:gro_fast/routes/app_routes.dart';
 
 class registration extends StatefulWidget {
   const registration({super.key});
