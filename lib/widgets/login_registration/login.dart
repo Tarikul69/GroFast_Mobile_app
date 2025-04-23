@@ -56,7 +56,7 @@ class _loginState extends State<login> {
             elevatedButton(
               text: "Login",
               onPressed: () {
-                Get.toNamed(login as String);
+                Get.toNamed(AppRoutes.home);
               },
               color: Colors.black,
             ),
@@ -66,7 +66,7 @@ class _loginState extends State<login> {
                 textButton(
                     text: "SignUp",
                     onPressed: () {
-                      Get.to(registration());
+                      Get.toNamed(AppRoutes.registration);
                     })
               ],
             ),
