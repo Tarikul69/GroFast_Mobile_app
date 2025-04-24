@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gro_fast/model/add_model.dart';
 import 'package:gro_fast/model/model.dart';
 import 'package:gro_fast/model/users_model.dart';
+import 'package:gro_fast/routes/app_routes.dart';
 import '../../network/api_service.dart';
 
 class home extends StatefulWidget {
@@ -57,7 +59,7 @@ class _homeState extends State<home> {
           subtitle: Text(userEmail),
           trailing: InkWell(
             onTap: () {
-              //Get.to(notifications());
+              Get.toNamed(AppRoutes.registration);
             },
             child: Icon(Icons.notifications),
           ),

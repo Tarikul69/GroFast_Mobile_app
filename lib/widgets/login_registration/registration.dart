@@ -17,17 +17,22 @@ class _registrationState extends State<registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(15),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 height: 25,
               ),
               Text(
                 "Registration",
-                style: textStyle,
+                style: textStyle(),
               ),
               SizedBox(
                 height: 15,
@@ -78,11 +83,14 @@ class _registrationState extends State<registration> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Already have an account?"),
-                  textButton(
-                      text: "Login",
-                      onPressed: () {
+                  InkWell(
+                      onTap: () {
                         Get.toNamed(AppRoutes.login);
-                      })
+                      },
+                      child: Text(
+                        " Signin",
+                        style: textStyle(15),
+                      )),
                 ],
               )
             ],

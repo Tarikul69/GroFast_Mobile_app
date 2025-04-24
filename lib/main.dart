@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter GetX Routing',
+      title: 'Gro Fast',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.registration,
       getPages: AppPages.routes,
     );
   }

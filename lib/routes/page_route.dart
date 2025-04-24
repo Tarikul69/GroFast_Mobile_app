@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:gro_fast/widgets/home/home.dart';
 import 'package:gro_fast/widgets/login_registration/forgetpassword.dart';
 import 'package:gro_fast/widgets/login_registration/login.dart';
+import 'package:gro_fast/widgets/login_registration/registration.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -14,6 +15,13 @@ class AppPages {
       name: AppRoutes.login,
       page: () => login(),
     ),
-    GetPage(name: AppRoutes.forgetpassword, page: () => forgetpassword())
+    GetPage(
+      name: AppRoutes.forgetpassword,
+      page: () => forgetpassword(),
+    ),
+    GetPage(
+      name: AppRoutes.registration,
+      page: () => registration(),
+    )
   ];
 }

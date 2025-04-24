@@ -20,13 +20,14 @@ class _loginState extends State<login> {
       body: Container(
         padding: EdgeInsets.all(10),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               height: 25,
             ),
             Text(
               "Login",
-              style: textStyle,
+              style: textStyle(),
             ),
             SizedBox(
               height: 15,
@@ -61,9 +62,9 @@ class _loginState extends State<login> {
             ),
             Row(
               children: [
-                Text("data"),
+                Text("Don't have account?"),
                 textButton(
-                  text: "SignUp",
+                  text: " SignUp",
                   onPressed: () {
                     Get.toNamed(AppRoutes.registration);
                   },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gro_fast/styles/style.dart';
 
 ////////////////////////////////////////
 ///////////Text Form Field/////////////
@@ -88,10 +89,8 @@ Widget textButton({
   required String text,
   required VoidCallback onPressed,
 }) {
-  return InkWell(
-    onTap: () {
-      onPressed;
-    },
+  return TextButton(
+    onPressed: onPressed,
     child: Text(
       text,
     ),
