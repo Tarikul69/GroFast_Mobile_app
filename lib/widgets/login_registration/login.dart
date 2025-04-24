@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:gro_fast/components/components.dart';
 import 'package:gro_fast/styles/style.dart';
-import 'package:gro_fast/widgets/login_registration/registration.dart';
 import 'package:get/get.dart';
 import 'package:gro_fast/routes/app_routes.dart';
 
@@ -64,10 +63,11 @@ class _loginState extends State<login> {
               children: [
                 Text("data"),
                 textButton(
-                    text: "SignUp",
-                    onPressed: () {
-                      Get.toNamed(AppRoutes.registration);
-                    })
+                  text: "SignUp",
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.registration);
+                  },
+                )
               ],
             ),
           ],
