@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gro_fast/model/add_model.dart';
 import 'package:gro_fast/model/model.dart';
 import 'package:gro_fast/model/users_model.dart';
 import 'package:gro_fast/routes/app_routes.dart';
@@ -54,12 +53,16 @@ class _homeState extends State<home> {
     return Scaffold(
       appBar: AppBar(
         title: ListTile(
-          leading: CircleAvatar(),
+          leading: InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.profile);
+              },
+              child: CircleAvatar()),
           title: Text('${posts.length}'),
           subtitle: Text(userEmail),
           trailing: InkWell(
             onTap: () {
-              Get.toNamed(AppRoutes.registration);
+              Get.toNamed(AppRoutes.notifications);
             },
             child: Icon(Icons.notifications),
           ),

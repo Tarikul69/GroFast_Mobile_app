@@ -96,3 +96,31 @@ Widget textButton({
     ),
   );
 }
+
+////////////////////////////////
+/// Profile Button/////////////
+/// //////////////////////////
+Widget profileButton({
+  required IconData icon,
+  required String label,
+  required VoidCallback onTap,
+  Color iconColor = Colors.black,
+  Color textColor = Colors.black,
+  Color backgroundColor = const Color.fromARGB(255, 168, 168, 168),
+  double elevation = 1.0,
+}) {
+  return Card(
+    color: backgroundColor,
+    elevation: elevation,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    child: ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: Text(
+        label,
+        style: TextStyle(color: textColor, fontSize: 16),
+      ),
+      trailing: Icon(Icons.arrow_forward_ios, color: iconColor, size: 16),
+      onTap: onTap,
+    ),
+  );
+}
