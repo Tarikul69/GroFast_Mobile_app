@@ -13,6 +13,7 @@ class _notificationsState extends State<notifications> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
+        title: Text("Notifications"),
       ),
       body: Container(
         padding: EdgeInsets.all(15),
