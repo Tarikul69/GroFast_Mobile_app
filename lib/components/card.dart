@@ -46,49 +46,6 @@ class GroFastCard extends StatelessWidget {
 //////////////////////////////////////
 ////////Carousel Card////////////////
 ////////////////////////////////////
-// class CarouselCard extends StatelessWidget {
-//   const CarouselCard({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final List<String> images = [
-//       'https://picsum.photos/id/1011/400/200',
-//       'https://picsum.photos/id/1012/400/200',
-//       'https://picsum.photos/id/1013/400/200',
-//     ];
-
-//     return CarouselSlider(
-//       options: CarouselOptions(
-//         height: 200.0,
-//         enlargeCenterPage: true,
-//         autoPlay: true,
-//         aspectRatio: 16 / 9,
-//         autoPlayCurve: Curves.fastOutSlowIn,
-//         enableInfiniteScroll: true,
-//         autoPlayAnimationDuration: Duration(milliseconds: 800),
-//         viewportFraction: 0.8,
-//       ),
-//       items: images.map((imageUrl) {
-//         return Builder(
-//           builder: (BuildContext context) {
-//             return Card(
-//               shape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.circular(15),
-//               ),
-//               clipBehavior: Clip.antiAlias,
-//               elevation: 5,
-//               child: Image.network(
-//                 imageUrl,
-//                 fit: BoxFit.cover,
-//                 width: double.infinity,
-//               ),
-//             );
-//           },
-//         );
-//       }).toList(),
-//     );
-//   }
-// }
 
 ///////////////////////////////////////
 /////////////Notification Card////////

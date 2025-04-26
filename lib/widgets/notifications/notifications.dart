@@ -17,7 +17,7 @@ class _notificationsState extends State<notifications> {
         title: Text("Notifications"),
       ),
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
