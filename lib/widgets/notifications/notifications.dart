@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gro_fast/components/card.dart';
 
 class notifications extends StatefulWidget {
   const notifications({super.key});
@@ -17,9 +18,23 @@ class _notificationsState extends State<notifications> {
       ),
       body: Container(
         padding: EdgeInsets.all(15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              notificationCard(
+                  icon: Icons.notifications, label: "Test", onTap: () {}),
+              notificationCard(
+                  icon: Icons.notifications, label: "Test", onTap: () {}),
+              notificationCard(
+                  icon: Icons.notifications, label: "Test", onTap: () {}),
+              notificationCard(
+                  icon: Icons.notifications, label: "Test", onTap: () {}),
+              notificationCard(
+                  icon: Icons.notifications, label: "Test", onTap: () {}),
+            ],
+          ),
         ),
       ),
     );

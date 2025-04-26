@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class GroFastCard extends StatelessWidget {
@@ -44,46 +43,77 @@ class GroFastCard extends StatelessWidget {
   }
 }
 
-class CarouselCard extends StatelessWidget {
-  const CarouselCard({super.key});
+//////////////////////////////////////
+////////Carousel Card////////////////
+////////////////////////////////////
+// class CarouselCard extends StatelessWidget {
+//   const CarouselCard({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final List<String> images = [
-      'https://picsum.photos/id/1011/400/200',
-      'https://picsum.photos/id/1012/400/200',
-      'https://picsum.photos/id/1013/400/200',
-    ];
+//   @override
+//   Widget build(BuildContext context) {
+//     final List<String> images = [
+//       'https://picsum.photos/id/1011/400/200',
+//       'https://picsum.photos/id/1012/400/200',
+//       'https://picsum.photos/id/1013/400/200',
+//     ];
 
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 200.0,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        aspectRatio: 16 / 9,
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        viewportFraction: 0.8,
+//     return CarouselSlider(
+//       options: CarouselOptions(
+//         height: 200.0,
+//         enlargeCenterPage: true,
+//         autoPlay: true,
+//         aspectRatio: 16 / 9,
+//         autoPlayCurve: Curves.fastOutSlowIn,
+//         enableInfiniteScroll: true,
+//         autoPlayAnimationDuration: Duration(milliseconds: 800),
+//         viewportFraction: 0.8,
+//       ),
+//       items: images.map((imageUrl) {
+//         return Builder(
+//           builder: (BuildContext context) {
+//             return Card(
+//               shape: RoundedRectangleBorder(
+//                 borderRadius: BorderRadius.circular(15),
+//               ),
+//               clipBehavior: Clip.antiAlias,
+//               elevation: 5,
+//               child: Image.network(
+//                 imageUrl,
+//                 fit: BoxFit.cover,
+//                 width: double.infinity,
+//               ),
+//             );
+//           },
+//         );
+//       }).toList(),
+//     );
+//   }
+// }
+
+///////////////////////////////////////
+/////////////Notification Card////////
+/// /////////////////////////////////
+Widget notificationCard({
+  required IconData icon,
+  required String label,
+  required VoidCallback onTap,
+  Color iconColor = Colors.black,
+  Color textColor = Colors.black,
+  Color backgroundColor = const Color.fromARGB(255, 168, 168, 168),
+  double elevation = 1.0,
+}) {
+  return Card(
+    color: backgroundColor,
+    elevation: elevation,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    child: ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: ListTile(
+        title: Text(label),
+        subtitle: Text("data"),
       ),
-      items: images.map((imageUrl) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              clipBehavior: Clip.antiAlias,
-              elevation: 5,
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
-            );
-          },
-        );
-      }).toList(),
-    );
-  }
+      trailing: Icon(Icons.arrow_forward_ios, color: iconColor, size: 16),
+      onTap: onTap,
+    ),
+  );
 }

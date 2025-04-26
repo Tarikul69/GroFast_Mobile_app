@@ -34,41 +34,43 @@ class home extends StatelessWidget {
         }),
         backgroundColor: Colors.green,
       ),
-      body: Obx(() {
-        if (controller.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
-        }
+      body: Obx(
+        () {
+          if (controller.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-        return ListView.builder(
-          itemCount: controller.shops.length,
-          padding: const EdgeInsets.all(12),
-          itemBuilder: (context, index) {
-            final shop = controller.shops[index];
+          return ListView.builder(
+            itemCount: controller.shops.length,
+            padding: const EdgeInsets.all(12),
+            itemBuilder: (context, index) {
+              final shop = controller.shops[index];
 
-            return Card(
-              elevation: .1,
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ListTile(
-                leading: const CircleAvatar(
-                  backgroundImage: NetworkImage(''),
-                  radius: 25,
+              return Card(
+                elevation: .1,
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                title: Text(shop['shop_name']),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(shop['shop_address']),
-                    Text("Email: ${shop['shop_phone_number']}"),
-                  ],
+                child: ListTile(
+                  leading: const CircleAvatar(
+                    backgroundImage: NetworkImage(''),
+                    radius: 25,
+                  ),
+                  title: Text(shop['shop_name']),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(shop['shop_address']),
+                      Text("Email: ${shop['shop_phone_number']}"),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
-        );
-      }),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
