@@ -34,7 +34,14 @@ class _forgetpasswordState extends State<forgetpassword> {
               height: 15,
             ),
             elevatedButton(
-                text: "Confirm", color: Colors.black, onPressed: () {}),
+                text: "Confirm",
+                color: Colors.black,
+                onPressed: () {
+                  snackbar_msg(
+                    context: context,
+                    message: "Please check your email",
+                  );
+                }),
           ],
         ),
       ),

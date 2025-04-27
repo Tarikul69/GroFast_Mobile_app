@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gro_fast/widgets/home/home.dart';
+import 'package:gro_fast/widgets/login_registration/registration.dart';
 
 class splashscreen extends StatefulWidget {
   const splashscreen({Key? key}) : super(key: key);
@@ -20,17 +20,15 @@ class _splashscreenState extends State<splashscreen> {
 
     await Future.delayed(Duration(milliseconds: 1500), () {});
     Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => home()),
-    );
+        context, MaterialPageRoute(builder: (context) => registration()));
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 217, 195, 220),
+      backgroundColor: Colors.green,
       body: Center(
         child: const Text(
-          'Attendance',
+          'GroFast',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,

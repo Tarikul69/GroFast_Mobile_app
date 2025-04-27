@@ -1,41 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:gro_fast/components/card.dart';
+import 'package:get/get.dart';
+import 'package:gro_fast/controllers/NotificationController.dart';
 
-class notifications extends StatefulWidget {
-  const notifications({super.key});
+class notifications extends StatelessWidget {
+  final NotificationController notificationController =
+      Get.put(NotificationController());
 
-  @override
-  State<notifications> createState() => _notificationsState();
-}
-
-class _notificationsState extends State<notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text("Notifications"),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              notificationCard(
-                  icon: Icons.notifications, label: "Test", onTap: () {}),
-              notificationCard(
-                  icon: Icons.notifications, label: "Test", onTap: () {}),
-              notificationCard(
-                  icon: Icons.notifications, label: "Test", onTap: () {}),
-              notificationCard(
-                  icon: Icons.notifications, label: "Test", onTap: () {}),
-              notificationCard(
-                  icon: Icons.notifications, label: "Test", onTap: () {}),
-            ],
-          ),
-        ),
+      appBar: AppBar(title: Text('Notifications')),
+      body: Obx(() {
+        if (notificationController.notifications.isEmpty) {
+          return Center(child: Text('No Notifications'));
+        }
+        return ListView.builder(
+          itemCount: notificationController.notifications.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(notificationController.notifications[index]),
+              trailing: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () =>
+                    notificationController.removeNotification(index),
+              ),
+            );
+          },
+        );
+      }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          notificationController
+              .addNotification('New notification at ${DateTime.now()}');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

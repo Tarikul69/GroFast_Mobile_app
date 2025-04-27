@@ -124,3 +124,48 @@ Widget profileButton({
     ),
   );
 }
+
+/////////////////////////////////////
+//////////////SnackBar//////////////
+///////////////////////////////////
+
+void snackbar_msg({
+  required BuildContext context,
+  required String message,
+  Color backgroundColor = const Color.fromARGB(255, 219, 222, 219),
+  Duration duration = const Duration(seconds: 2),
+}) {
+  final overlay = Overlay.of(context); // Get the Overlay
+  final overlayEntry = OverlayEntry(
+    builder: (context) => Positioned(
+      top: MediaQuery.of(context).padding.top + 20, // Top safe area + margin
+      left: 20,
+      right: 20,
+      child: Material(
+        elevation: 10,
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.transparent,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            message,
+            style: const TextStyle(color: Colors.black, fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    ),
+  );
+
+  // Insert the overlay
+  overlay.insert(overlayEntry);
+
+  // Remove the overlay after the duration
+  Future.delayed(duration).then((value) {
+    overlayEntry.remove();
+  });
+}

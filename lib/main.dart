@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Gro Fast',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.registration,
+      initialRoute: AppRoutes.splashscreen,
       getPages: AppPages.routes,
     );
   }
