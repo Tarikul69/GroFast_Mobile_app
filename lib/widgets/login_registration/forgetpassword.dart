@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gro_fast/components/components.dart';
+import 'package:gro_fast/routes/app_routes.dart';
 import 'package:gro_fast/styles/style.dart';
 
 class forgetpassword extends StatefulWidget {
@@ -34,14 +36,16 @@ class _forgetpasswordState extends State<forgetpassword> {
               height: 15,
             ),
             elevatedButton(
-                text: "Confirm",
-                color: Colors.black,
-                onPressed: () {
-                  snackbar_msg(
-                    context: context,
-                    message: "Please check your email",
-                  );
-                }),
+              text: "Confirm",
+              color: Colors.black,
+              onPressed: () {
+                snackbar_msg(
+                  context: context,
+                  message: "Please check your email",
+                );
+                Get.offAllNamed(AppRoutes.verification_pin);
+              },
+            ),
           ],
         ),
       ),

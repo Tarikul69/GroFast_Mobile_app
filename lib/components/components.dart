@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gro_fast/styles/style.dart';
 
 ////////////////////////////////////////
 ///////////Text Form Field/////////////
@@ -129,34 +128,40 @@ Widget profileButton({
 //////////////SnackBar//////////////
 ///////////////////////////////////
 
-void snackbar_msg({
-  required BuildContext context,
-  required String message,
-  Color backgroundColor = const Color.fromARGB(255, 219, 222, 219),
-  Duration duration = const Duration(seconds: 2),
-}) {
-  final overlay = Overlay.of(context); // Get the Overlay
+void snackbar_msg(
+    {required BuildContext context,
+    required String message,
+    Color backgroundColor = const Color.fromARGB(255, 219, 222, 219),
+    Duration duration = const Duration(seconds: 2),
+    IconData icon = Icons.notification_add}) {
+  final overlay = Overlay.of(context);
   final overlayEntry = OverlayEntry(
     builder: (context) => Positioned(
-      top: MediaQuery.of(context).padding.top + 20, // Top safe area + margin
-      left: 20,
-      right: 20,
+      top: MediaQuery.of(context).padding.top + 10,
+      left: 10,
+      right: 10,
       child: Material(
-        elevation: 10,
+        elevation: 5,
         borderRadius: BorderRadius.circular(12),
         color: Colors.transparent,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            message,
-            style: const TextStyle(color: Colors.black, fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ),
+            //padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: ListTile(
+              leading: Icon(icon),
+              title: Text(
+                message,
+                style: const TextStyle(color: Colors.black, fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+              subtitle: Text(
+                "data",
+                textAlign: TextAlign.left,
+              ),
+            )),
       ),
     ),
   );
