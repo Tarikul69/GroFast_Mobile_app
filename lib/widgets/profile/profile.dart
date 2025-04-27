@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 import 'package:gro_fast/components/components.dart';
+import 'package:gro_fast/routes/app_routes.dart';
 import 'package:gro_fast/styles/style.dart';
 
 class profile extends StatefulWidget {
@@ -25,7 +28,12 @@ class _profileState extends State<profile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              profileButton(icon: Icons.home, label: "Home", onTap: () {}),
+              profileButton(
+                  icon: Icons.home,
+                  label: "My Offers",
+                  onTap: () {
+                    Get.toNamed(AppRoutes.my_offers);
+                  }),
               profileButton(icon: Icons.home, label: "Home", onTap: () {}),
               profileButton(icon: Icons.home, label: "Home", onTap: () {}),
               profileButton(icon: Icons.home, label: "Home", onTap: () {}),

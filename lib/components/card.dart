@@ -52,7 +52,8 @@ class GroFastCard extends StatelessWidget {
 /// /////////////////////////////////
 Widget notificationCard({
   required IconData icon,
-  required String label,
+  required String title,
+  String subtitle = '',
   required VoidCallback onTap,
   Color iconColor = Colors.black,
   Color textColor = Colors.black,
@@ -66,7 +67,7 @@ Widget notificationCard({
     child: ListTile(
       leading: Icon(icon, color: iconColor),
       title: ListTile(
-        title: Text(label),
+        title: Text(title),
         subtitle: Text("data"),
       ),
       trailing: Icon(Icons.arrow_forward_ios, color: iconColor, size: 16),
