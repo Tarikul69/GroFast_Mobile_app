@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gro_fast/widgets/home/home.dart';
+import 'package:gro_fast/widgets/home/shop.dart';
 import 'package:gro_fast/widgets/login_registration/forgetpassword.dart';
 import 'package:gro_fast/widgets/login_registration/login.dart';
 import 'package:gro_fast/widgets/login_registration/registration.dart';
@@ -24,6 +25,7 @@ class AppPages {
     GetPage(name: AppRoutes.bottom_navigationbar, page: () => BottomAppBar()),
     GetPage(name: AppRoutes.verification_pin, page: () => verification_pin()),
     GetPage(name: AppRoutes.reset_password, page: () => reset_password()),
+    GetPage(name: AppRoutes.shop, page: () => shop()),
     //My Offers
     GetPage(name: AppRoutes.my_offers, page: () => my_offers()),
     //

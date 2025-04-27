@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gro_fast/routes/app_routes.dart';
 import 'package:gro_fast/controllers/Home_controller.dart';
+import 'package:gro_fast/routes/app_routes.dart';
 
 class home extends StatelessWidget {
   home({super.key});
@@ -12,14 +12,15 @@ class home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Obx(() {
           final userEmail = home_controller.users.isNotEmpty
-              ? home_controller.users[0]['email'] ?? ''
+              ? home_controller.users[0]['email'] ?? 'Loading...'
               : 'Loading...';
 
           return ListTile(
             leading: InkWell(
-              onTap: () => Get.toNamed(AppRoutes.profile),
+              onTap: () => print('Navigate to Profile'),
               child: const CircleAvatar(),
             ),
             title: Text(home_controller.users.isNotEmpty
@@ -27,53 +28,59 @@ class home extends StatelessWidget {
                 : 'Loading...'),
             subtitle: Text(userEmail),
             trailing: InkWell(
-              onTap: () => Get.toNamed(AppRoutes.notifications),
+              onTap: () => print('Navigate to Notifications'),
               child: const Icon(Icons.notifications),
             ),
           );
         }),
-        backgroundColor: Colors.green,
       ),
-      body: Column(
-        children: [
-          Obx(
-            () {
-              if (home_controller.isLoading.value) {
-                return const Center(child: CircularProgressIndicator());
-              }
+      body: Obx(
+        () {
+          if (home_controller.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-              return ListView.builder(
-                itemCount: home_controller.shops.length,
-                padding: const EdgeInsets.all(12),
-                itemBuilder: (context, index) {
-                  final shop = home_controller.shops[index];
+          if (home_controller.shops.isEmpty) {
+            return const Center(
+              child: Text('No Shops Available'),
+            );
+          }
 
-                  return Card(
-                    elevation: .1,
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: ListTile(
-                      leading: const CircleAvatar(
-                        backgroundImage: NetworkImage(''),
-                        radius: 25,
-                      ),
-                      title: Text(shop['shop_name']),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(shop['shop_address']),
-                          Text("Email: ${shop['shop_phone_number']}"),
-                        ],
-                      ),
-                    ),
-                  );
+          return ListView.builder(
+            padding: const EdgeInsets.all(12),
+            itemCount: home_controller.shops.length,
+            itemBuilder: (context, index) {
+              final shop = home_controller.shops[index];
+
+              return InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoutes.shop);
                 },
+                child: Card(
+                  elevation: 0.5,
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ListTile(
+                    leading: const CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/images/shop.png'),
+                    ),
+                    title: Text(shop['shop_name'] ?? 'No Name'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(shop['shop_address'] ?? 'No Address'),
+                        Text("Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
+                      ],
+                    ),
+                  ),
+                ),
               );
             },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
