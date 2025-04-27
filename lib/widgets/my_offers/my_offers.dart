@@ -56,7 +56,7 @@ class my_offers extends StatelessWidget {
                   else
                     for (var offer in dailyOffers)
                       notificationCard(
-                        icon: Icons.offline_bolt,
+                        icon: Icons.email,
                         title: offer.title,
                         onTap: () {},
                       ),
@@ -80,7 +80,7 @@ class my_offers extends StatelessWidget {
                   else
                     for (var offer in weeklyOffers)
                       notificationCard(
-                        icon: Icons.offline_bolt,
+                        icon: Icons.email,
                         title: offer.title,
                         onTap: () {},
                       ),
@@ -104,7 +104,7 @@ class my_offers extends StatelessWidget {
                   else
                     for (var offer in paymentOffers)
                       notificationCard(
-                        icon: Icons.offline_bolt,
+                        icon: Icons.email,
                         title: offer.title,
                         onTap: () {},
                       ),
