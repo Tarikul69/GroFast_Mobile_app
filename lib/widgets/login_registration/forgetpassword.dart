@@ -41,7 +41,7 @@ class _forgetpasswordState extends State<forgetpassword> {
               onPressed: () {
                 snackbar_msg(
                   context: context,
-                  message: "Please check your email",
+                  title: "Please check your email",
                 );
                 Get.offAllNamed(AppRoutes.verification_pin);
               },

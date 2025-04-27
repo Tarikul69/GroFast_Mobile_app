@@ -130,7 +130,8 @@ Widget profileButton({
 
 void snackbar_msg(
     {required BuildContext context,
-    required String message,
+    required String title,
+    String subtitle = '',
     Color backgroundColor = const Color.fromARGB(255, 219, 222, 219),
     Duration duration = const Duration(seconds: 2),
     IconData icon = Icons.notification_add}) {
@@ -153,12 +154,12 @@ void snackbar_msg(
             child: ListTile(
               leading: Icon(icon),
               title: Text(
-                message,
+                title,
                 style: const TextStyle(color: Colors.black, fontSize: 16),
                 textAlign: TextAlign.left,
               ),
               subtitle: Text(
-                "data",
+                subtitle,
                 textAlign: TextAlign.left,
               ),
             )),

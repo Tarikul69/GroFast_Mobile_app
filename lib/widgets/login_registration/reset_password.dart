@@ -15,11 +15,21 @@ class reset_password extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
+        padding: EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             textFormField(hintText: "New Password", icon: Icons.password),
+            SizedBox(
+              height: 15,
+            ),
             textFormField(hintText: "Confirm Password", icon: Icons.password),
+            SizedBox(
+              height: 15,
+            ),
             elevatedButton(
               text: "Confirm",
               onPressed: () {
