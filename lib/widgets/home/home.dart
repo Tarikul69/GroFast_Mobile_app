@@ -20,7 +20,7 @@ class home extends StatelessWidget {
 
           return ListTile(
             leading: InkWell(
-              onTap: () => print('Navigate to Profile'),
+              onTap: () => {Get.toNamed(AppRoutes.profile)},
               child: const CircleAvatar(),
             ),
             title: Text(home_controller.users.isNotEmpty
@@ -28,7 +28,7 @@ class home extends StatelessWidget {
                 : 'Loading...'),
             subtitle: Text(userEmail),
             trailing: InkWell(
-              onTap: () => print('Navigate to Notifications'),
+              onTap: () => print(Get.toNamed(AppRoutes.notifications)),
               child: const Icon(Icons.notifications),
             ),
           );
