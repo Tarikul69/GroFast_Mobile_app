@@ -1,6 +1,3 @@
-import 'package:gro_fast/widgets/home/shop.dart';
-import 'package:gro_fast/widgets/my_offers/my_offers.dart';
-
 abstract class AppRoutes {
   static const splashscreen = '/splashscreen';
   static const login = '/login';

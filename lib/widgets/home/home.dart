@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gro_fast/controllers/Home_controller.dart';
 import 'package:gro_fast/routes/app_routes.dart';
+import 'package:gro_fast/widgets/bottom_navigationbar/bottom_navigationbar.dart';
 
 class home extends StatelessWidget {
   home({super.key});

@@ -9,7 +9,10 @@ class notifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Notifications')),
+      appBar: AppBar(
+        title: Text('Notifications'),
+        backgroundColor: Colors.green,
+      ),
       body: Obx(() {
         if (notificationController.notifications.isEmpty) {
           return Center(child: Text('No Notifications'));
