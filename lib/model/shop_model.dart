@@ -28,3 +28,14 @@ class Shop_list {
     );
   }
 }
+
+// models/user_arguments.dart
+class ShopArguments {
+  final String shop_phone_number;
+  final String shop_name;
+
+  ShopArguments(
+    this.shop_phone_number,
+    this.shop_name,
+  );
+}

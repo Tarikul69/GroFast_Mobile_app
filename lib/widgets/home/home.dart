@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gro_fast/controllers/Home_controller.dart';
+import 'package:gro_fast/controllers/Users_controller.dart';
+import 'package:gro_fast/model/shop_model.dart';
 import 'package:gro_fast/routes/app_routes.dart';
-import 'package:gro_fast/widgets/bottom_navigationbar/bottom_navigationbar.dart';
 
 class home extends StatelessWidget {
   home({super.key});
 
   final Home_controller home_controller = Get.put(Home_controller());
+  final Users_controller users_controller = Get.put(Users_controller());
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +17,8 @@ class home extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Obx(() {
-          final userEmail = home_controller.users.isNotEmpty
-              ? home_controller.users[0]['email'] ?? 'Loading...'
+          final userEmail = users_controller.users.isNotEmpty
+              ? home_controller.users[1]['email'] ?? 'Loading...'
               : 'Loading...';
 
           return ListTile(
@@ -24,8 +26,8 @@ class home extends StatelessWidget {
               onTap: () => {Get.toNamed(AppRoutes.profile)},
               child: const CircleAvatar(),
             ),
-            title: Text(home_controller.users.isNotEmpty
-                ? home_controller.users[0]['username'] ?? 'No Name'
+            title: Text(users_controller.users.isNotEmpty
+                ? users_controller.users[1]['username'] ?? 'No Name'
                 : 'Loading...'),
             subtitle: Text(userEmail),
             trailing: InkWell(
@@ -52,10 +54,13 @@ class home extends StatelessWidget {
             itemCount: home_controller.shops.length,
             itemBuilder: (context, index) {
               final shop = home_controller.shops[index];
+              final args =
+                  ShopArguments(shop['shop_phone_number'], shop['shop_name']);
 
               return InkWell(
                 onTap: () {
-                  Get.toNamed(AppRoutes.shop);
+                  //Get.toNamed(AppRoutes.shop);
+                  Navigator.pushNamed(context, AppRoutes.shop, arguments: args);
                 },
                 child: Card(
                   elevation: 0.5,
@@ -68,12 +73,23 @@ class home extends StatelessWidget {
                       radius: 25,
                       backgroundImage: AssetImage('assets/images/shop.png'),
                     ),
-                    title: Text(shop['shop_name'] ?? 'No Name'),
+                    title: Text(
+                      "${shop['shop_name'] ?? 'No Name'}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(shop['shop_address'] ?? 'No Address'),
                         Text("Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
+                        Text(
+                          "Rating: ${shop['shop_rating']}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
                       ],
                     ),
                   ),
