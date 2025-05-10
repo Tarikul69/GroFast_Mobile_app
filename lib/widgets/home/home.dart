@@ -2,18 +2,18 @@ import 'package:carousel_slider/carousel_slider.dart'
     show CarouselOptions, CarouselSlider;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gro_fast/components/components.dart';
 import 'package:gro_fast/controllers/Home_controller.dart';
 import 'package:gro_fast/controllers/Users_controller.dart';
 import 'package:gro_fast/model/shop_model.dart';
 import 'package:gro_fast/routes/app_routes.dart';
-import 'package:gro_fast/styles/style.dart';
 
 class home extends StatelessWidget {
   home({super.key});
 
   final Home_controller home_controller = Get.put(Home_controller());
   final Users_controller users_controller = Get.put(Users_controller());
+
+  get args => null;
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +54,14 @@ class home extends StatelessWidget {
           }
 
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(5),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CarouselSlider(
                   options: CarouselOptions(
-                    height: 250,
+                    height: Get.height * 0.2,
                     enlargeCenterPage: true,
                     enableInfiniteScroll: false,
                     autoPlay: true,
@@ -71,10 +71,13 @@ class home extends StatelessWidget {
                       builder: (BuildContext context) {
                         return InkWell(
                           onTap: () {
-                            //Navigator.pushNamed(context, AppRoutes.shop, arguments: args);
+                            Navigator.pushNamed(
+                                context, AppRoutes.offers_details,
+                                arguments: args);
                           },
                           child: Card(
                             elevation: 4,
+                            color: Colors.blueGrey,
                             margin: const EdgeInsets.all(8),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -97,11 +100,9 @@ class home extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
                                   ),
-                                  Text(shop['shop_address'] ?? 'No Address'),
+                                  //Text(shop['shop_address'] ?? 'No Address'),
                                   Text(
                                       "Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
-                                  Text(
-                                      "Rating: ${shop['shop_rating'] ?? '0.0'}"),
                                 ],
                               ),
                             ),

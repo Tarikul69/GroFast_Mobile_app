@@ -8,6 +8,7 @@ import 'package:gro_fast/widgets/login_registration/registration.dart';
 import 'package:gro_fast/widgets/login_registration/reset_password.dart';
 import 'package:gro_fast/widgets/login_registration/verification_pin.dart';
 import 'package:gro_fast/widgets/my_offers/my_offers.dart';
+import 'package:gro_fast/widgets/my_offers/offers_details.dart';
 import 'package:gro_fast/widgets/notifications/notifications.dart';
 import 'package:gro_fast/widgets/profile/profile.dart';
 import 'package:gro_fast/widgets/splash_screen/splashscreen.dart';
@@ -26,6 +27,7 @@ class AppPages {
     GetPage(name: AppRoutes.verification_pin, page: () => verification_pin()),
     GetPage(name: AppRoutes.reset_password, page: () => reset_password()),
     GetPage(name: AppRoutes.shop, page: () => shop()),
+    GetPage(name: AppRoutes.offers_details, page: () => offers_details()),
     //My Offers
     GetPage(name: AppRoutes.my_offers, page: () => my_offers()),
     //

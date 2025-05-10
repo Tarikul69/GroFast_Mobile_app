@@ -3,32 +3,40 @@ import 'package:get/get.dart';
 import 'package:gro_fast/controllers/shop_controller.dart';
 import 'package:gro_fast/model/shop_model.dart';
 
-class shop extends StatefulWidget {
-  const shop({super.key});
-
+class offers_details extends StatefulWidget {
   @override
-  State<shop> createState() => _shopState();
+  State<offers_details> createState() => _offers_detailsState();
 }
 
-class _shopState extends State<shop> {
+class _offers_detailsState extends State<offers_details> {
   final ShopController shopController = Get.put(ShopController());
+  ShopArguments? args;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final args = ModalRoute.of(context)!.settings.arguments as ShopArguments;
-    shopController.setShopId(args.shop_id); // ✅ Called only once
+    if (args == null) {
+      final data = ModalRoute.of(context)?.settings.arguments;
+      if (data is ShopArguments) {
+        args = data;
+        shopController.setShopId(args!.shop_id);
+      } else {
+        Get.snackbar("Error", "Invalid or missing shop data");
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as ShopArguments;
+    if (args == null) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        centerTitle: true,
-        title: Text("${args.shop_name}"),
+        title: Text("Offer Details"),
       ),
       body: Obx(
         () {

@@ -179,7 +179,7 @@ void snackbar_msg(
   });
 }
 
-Widget carousel_slider(home_controller) {
+Widget carousel_slider(dynamic home_controller) {
   return CarouselSlider(
     options: CarouselOptions(
       height: 250,
