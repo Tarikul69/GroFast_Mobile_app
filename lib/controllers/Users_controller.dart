@@ -9,7 +9,7 @@ class Users_controller extends GetxController {
   void onInit() {
     super.onInit();
     fetchUsers();
-    print(users);
+    //print(users);
   }
 
   // Fetch Users

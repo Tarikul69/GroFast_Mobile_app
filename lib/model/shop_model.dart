@@ -31,11 +31,38 @@ class Shop_list {
 
 // models/user_arguments.dart
 class ShopArguments {
-  final String shop_phone_number;
+  final int shop_id;
   final String shop_name;
 
   ShopArguments(
-    this.shop_phone_number,
+    this.shop_id,
     this.shop_name,
   );
+}
+
+//Product Category Model
+class Product_Category {
+  int? category_id;
+  String? category_name;
+  String? created_at;
+  int? shop_id;
+
+  Product_Category(
+      {this.category_id, this.category_name, this.created_at, this.shop_id});
+  Product_Category.fromJson(Map<String, dynamic> json) {
+    category_id = json['category_id'];
+    category_name = json['category_name'];
+    created_at = json['created_at'];
+    shop_id = json['shop_id'];
+  }
+
+  Map<String, dynamic> tojson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['category_id'] = this.category_id;
+    data['category_name'] = this.category_name;
+    data['created_at'] = this.created_at;
+    data['shop_id'] = this.shop_id;
+
+    return data;
+  }
 }

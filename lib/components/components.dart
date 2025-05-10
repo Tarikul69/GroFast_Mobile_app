@@ -1,4 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart'
+    show CarouselOptions, CarouselSlider;
 import 'package:flutter/material.dart';
+import 'package:gro_fast/model/shop_model.dart';
 
 ////////////////////////////////////////
 ///////////Text Form Field/////////////
@@ -174,4 +177,55 @@ void snackbar_msg(
   Future.delayed(duration).then((value) {
     overlayEntry.remove();
   });
+}
+
+Widget carousel_slider(home_controller) {
+  return CarouselSlider(
+    options: CarouselOptions(
+      height: 250,
+      enlargeCenterPage: true,
+      enableInfiniteScroll: false,
+      autoPlay: true,
+    ),
+    items: home_controller.shops.map((shop) {
+      return Builder(
+        builder: (BuildContext context) {
+          return InkWell(
+            onTap: () {
+              //Navigator.pushNamed(context, AppRoutes.shop, arguments: args);
+            },
+            child: Card(
+              elevation: 4,
+              margin: const EdgeInsets.all(8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage('assets/images/shop.png'),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "${shop['shop_name'] ?? 'No Name'}",
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Text(shop['shop_address'] ?? 'No Address'),
+                    Text("Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
+                    Text("Rating: ${shop['shop_rating'] ?? '0.0'}"),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    }).toList(),
+  );
 }
