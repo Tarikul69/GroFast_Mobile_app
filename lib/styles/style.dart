@@ -14,7 +14,7 @@ const TextStyle kHeadingTextStyle = TextStyle(
   color: Colors.black,
 );
 
-TextStyle textStyle([double size = 25]) {
+TextStyle textStyle([double size = 25.0]) {
   return TextStyle(
     fontSize: size,
     fontWeight: FontWeight.bold,

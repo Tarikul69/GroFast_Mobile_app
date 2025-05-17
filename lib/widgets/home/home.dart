@@ -6,6 +6,7 @@ import 'package:gro_fast/controllers/Home_controller.dart';
 import 'package:gro_fast/controllers/Users_controller.dart';
 import 'package:gro_fast/model/shop_model.dart';
 import 'package:gro_fast/routes/app_routes.dart';
+import 'package:gro_fast/styles/style.dart';
 
 class home extends StatelessWidget {
   home({super.key});
@@ -77,32 +78,46 @@ class home extends StatelessWidget {
                           },
                           child: Card(
                             elevation: 4,
-                            color: Colors.blueGrey,
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             margin: const EdgeInsets.all(8),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Container(
+                              height: 2,
                               padding: const EdgeInsets.all(12),
                               width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/placeholder_image/image2.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const CircleAvatar(
-                                    radius: 30,
-                                    backgroundImage:
-                                        AssetImage('assets/images/shop.png'),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        .075,
                                   ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    "${shop['shop_name'] ?? 'No Name'}",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
+                                  ListTile(
+                                    leading: const CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage:
+                                          AssetImage('assets/images/shop.png'),
+                                    ),
+                                    title: Text(
+                                      "${shop['shop_name'] ?? 'No Name'}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                    subtitle: Text(
+                                        "Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
                                   ),
                                   //Text(shop['shop_address'] ?? 'No Address'),
-                                  Text(
-                                      "Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
                                 ],
                               ),
                             ),
@@ -114,7 +129,7 @@ class home extends StatelessWidget {
                 ),
                 Text(
                   "Shop List",
-                  //strutStyle: textStyle(15.0),
+                  style: textStyle(),
                 ),
                 for (int index = 0;
                     index < home_controller.shops.length;
