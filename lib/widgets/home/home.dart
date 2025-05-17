@@ -67,65 +67,68 @@ class home extends StatelessWidget {
                     enableInfiniteScroll: false,
                     autoPlay: true,
                   ),
-                  items: home_controller.shops.map((shop) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, AppRoutes.offers_details,
-                                arguments: args);
-                          },
-                          child: Card(
-                            elevation: 4,
-                            color: const Color.fromARGB(255, 255, 255, 255),
-                            margin: const EdgeInsets.all(8),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Container(
-                              height: 2,
-                              padding: const EdgeInsets.all(12),
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/placeholder_image/image2.png'),
-                                  fit: BoxFit.cover,
-                                ),
+                  items: home_controller.shops.map(
+                    (shop) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.offers_details,
+                                  arguments: args);
+                            },
+                            child: Card(
+                              elevation: 4,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                              margin: const EdgeInsets.all(8),
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        .075,
+                              child: Container(
+                                height: 2,
+                                padding: const EdgeInsets.all(12),
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/placeholder_image/image2.png'),
+                                    fit: BoxFit.cover,
                                   ),
-                                  ListTile(
-                                    leading: const CircleAvatar(
-                                      radius: 30,
-                                      backgroundImage:
-                                          AssetImage('assets/images/shop.png'),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .075,
                                     ),
-                                    title: Text(
-                                      "${shop['shop_name'] ?? 'No Name'}",
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16),
+                                    ListTile(
+                                      leading: const CircleAvatar(
+                                        radius: 30,
+                                        backgroundImage: AssetImage(
+                                            'assets/images/shop.png'),
+                                      ),
+                                      title: Text(
+                                        "${shop['shop_name'] ?? 'No Name'}",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      subtitle: Text(
+                                          "Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
                                     ),
-                                    subtitle: Text(
-                                        "Phone: ${shop['shop_phone_number'] ?? 'N/A'}"),
-                                  ),
-                                  //Text(shop['shop_address'] ?? 'No Address'),
-                                ],
+                                    //Text(shop['shop_address'] ?? 'No Address'),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    );
-                  }).toList(),
+                          );
+                        },
+                      );
+                    },
+                  ).toList(),
                 ),
                 Text(
                   "Shop List",

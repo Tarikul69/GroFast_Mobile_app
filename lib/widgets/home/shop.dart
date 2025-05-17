@@ -13,12 +13,14 @@ class shop extends StatefulWidget {
 
 class _shopState extends State<shop> {
   final ShopController shopController = Get.put(ShopController());
+  final ShopController test = Get.put(ShopController());
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final args = ModalRoute.of(context)!.settings.arguments as ShopArguments;
-    shopController.setShopId(args.shop_id); // ✅ Called only once
+    shopController.setShopId(args.shop_id);
+    test.fetchCategory(args.shop_id);
   }
 
   @override
@@ -31,22 +33,12 @@ class _shopState extends State<shop> {
         centerTitle: true,
         title: Text("${args.shop_name}"),
       ),
-      body: //Obx(
-          //() {
-          // if (shopController.isLoading.value) {
-          //   return const Center(child: CircularProgressIndicator());
-          // }
-
-          // if (shopController.category.isEmpty) {
-          //   return const Center(child: Text("No categories found.."));
-          // }
-
-          SingleChildScrollView(
+      body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(6, 0, 6, 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * .25,
               width: MediaQuery.of(context).size.width,
               child: Card(
@@ -76,23 +68,42 @@ class _shopState extends State<shop> {
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  category_card(
-                      'Fruits', 'assets/placeholder_image/category.png'),
-                  category_card(
-                      'Vegetables', 'assets/placeholder_image/category.png'),
-                  category_card(
-                      'Dairy', 'assets/placeholder_image/category.png'),
-                  category_card(
-                      'Meat and fish', 'assets/placeholder_image/category.png'),
-                  category_card(
-                      'Frozen foods', 'assets/placeholder_image/category.png'),
-                  category_card(
-                      'Snacks', 'assets/placeholder_image/category.png'),
-                  category_card(
-                      'Drinks', 'assets/placeholder_image/category.png')
-                ],
+              child: Obx(
+                () {
+                  if (test.isLoading.value) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (test.category.isEmpty) {
+                    return const Center(child: Text("No categories found."));
+                  }
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      const Text(
+                        "Categories",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: test.category.map<Widget>(
+                            (cat) {
+                              return category_card(
+                                cat['category_name'],
+                                'assets/placeholder_image/category.png',
+                              );
+                            },
+                          ).toList(),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
             Text(
