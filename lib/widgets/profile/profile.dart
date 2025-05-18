@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:gro_fast/components/components.dart';
-import 'package:gro_fast/routes/app_routes.dart';
 import 'package:gro_fast/styles/style.dart';
+import 'package:gro_fast/widgets/routes/app_routes.dart';
 
 class profile extends StatefulWidget {
   const profile({super.key});

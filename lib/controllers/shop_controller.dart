@@ -16,8 +16,10 @@ class ShopController extends GetxController {
     try {
       isLoading(true);
       final usersData = await getData(
-          endpoint: '/shopowner/category_list_id/$shopId/',
-          key: 'category'); // Make sure 'category' is the correct key
+        endpoint: '/shopowner/category_list_id/$shopId/',
+        key: 'category',
+      );
+      print(usersData);
       category.assignAll(usersData);
     } catch (e) {
       print("Error fetching category data: $e");

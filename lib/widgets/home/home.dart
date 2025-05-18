@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:gro_fast/controllers/Home_controller.dart';
 import 'package:gro_fast/controllers/Users_controller.dart';
 import 'package:gro_fast/model/shop_model.dart';
-import 'package:gro_fast/routes/app_routes.dart';
 import 'package:gro_fast/styles/style.dart';
+import 'package:gro_fast/widgets/routes/app_routes.dart';
 
 class home extends StatelessWidget {
   home({super.key});

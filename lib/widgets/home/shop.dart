@@ -6,21 +6,18 @@ import 'package:gro_fast/styles/style.dart';
 
 class shop extends StatefulWidget {
   const shop({super.key});
-
   @override
   State<shop> createState() => _shopState();
 }
 
 class _shopState extends State<shop> {
   final ShopController shopController = Get.put(ShopController());
-  final ShopController test = Get.put(ShopController());
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final args = ModalRoute.of(context)!.settings.arguments as ShopArguments;
     shopController.setShopId(args.shop_id);
-    test.fetchCategory(args.shop_id);
   }
 
   @override
@@ -70,11 +67,11 @@ class _shopState extends State<shop> {
               scrollDirection: Axis.horizontal,
               child: Obx(
                 () {
-                  if (test.isLoading.value) {
+                  if (shopController.isLoading.value) {
                     return const Center(child: CircularProgressIndicator());
                   }
 
-                  if (test.category.isEmpty) {
+                  if (shopController.category.isEmpty) {
                     return const Center(child: Text("No categories found."));
                   }
 
@@ -91,10 +88,10 @@ class _shopState extends State<shop> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: test.category.map<Widget>(
-                            (cat) {
+                          children: shopController.category.map(
+                            (categories) {
                               return category_card(
-                                cat['category_name'],
+                                categories['category_name'],
                                 'assets/placeholder_image/category.png',
                               );
                             },

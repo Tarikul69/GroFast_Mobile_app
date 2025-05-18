@@ -9,6 +9,7 @@ import 'package:gro_fast/model/shop_model.dart';
 Widget textFormField({
   required String hintText,
   required IconData icon,
+  TextEditingController? controller,
   //required String message,
 }) {
   return TextFormField(

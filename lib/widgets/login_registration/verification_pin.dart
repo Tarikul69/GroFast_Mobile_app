@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gro_fast/components/components.dart';
-import 'package:gro_fast/routes/app_routes.dart';
 import 'package:gro_fast/styles/style.dart';
+import 'package:gro_fast/widgets/routes/app_routes.dart';
 
 class verification_pin extends StatelessWidget {
   const verification_pin({super.key});
